@@ -31,7 +31,7 @@ export type ContactLink = {
 export type SkillGroup = {
   title: string;
   icon: LucideIcon;
-  skills: string[];
+  skills: readonly string[];
 };
 
 export type Experience = {
@@ -41,7 +41,7 @@ export type Experience = {
   dates?: string;
   type?: string;
   domain?: string;
-  highlights: string[];
+  highlights: readonly string[];
 };
 
 export type Project = {
@@ -49,7 +49,7 @@ export type Project = {
   type: string;
   description: string;
   link?: string;
-  tech: string[];
+  tech: readonly string[];
 };
 
 export type Expertise = {
@@ -57,7 +57,67 @@ export type Expertise = {
   icon: LucideIcon;
 };
 
+export type Locale = "en" | "fa";
+
 export const resume = {
+  locale: "en",
+  dir: "ltr",
+  languageName: "English",
+  languageToggleLabel: "فارسی",
+  ui: {
+    navAria: "Primary navigation",
+    themeLight: "Switch to light mode",
+    themeDark: "Switch to dark mode",
+    menuToggle: "Toggle navigation menu",
+    viewProjects: "View Projects",
+    downloadResume: "Download Resume",
+    contactMe: "Contact Me",
+    emailMohammad: "Email Mohammad",
+    operatingProfile: "Operating profile",
+    operatingTitle: "Product-minded frontend engineering",
+    currentFocus: "Current focus",
+    careerHighlights: "Career highlights",
+    sectionHeaders: {
+      skills: {
+        eyebrow: "Capability Map",
+        title: "A practical frontend toolkit for complex product work.",
+        description:
+          "Skills are grouped for quick scanning and rendered directly from structured resume data.",
+      },
+      experience: {
+        eyebrow: "Experience",
+        title: "Enterprise, commerce, crypto, and PWA work at production scale.",
+        description:
+          "A readable timeline that emphasizes impact, architecture, performance, team leadership, and delivery quality.",
+      },
+      projects: {
+        eyebrow: "Selected Work",
+        title:
+          "Projects with reusable architecture and measurable product outcomes.",
+        description:
+          "Each project card is data-driven, link-aware, and designed to communicate domain, value, and technical scope quickly.",
+      },
+      knowledge: {
+        eyebrow: "Knowledge",
+        title:
+          "Depth across architecture, delivery, quality, and developer experience.",
+        description:
+          "Expertise areas are presented as compact cards so recruiters and technical leaders can scan breadth without losing detail.",
+      },
+      education: {
+        eyebrow: "Education",
+        title: "Academic foundation and language capability.",
+        description:
+          "Formal education and working language proficiency are kept editable alongside the rest of the resume data.",
+      },
+      contact: {
+        eyebrow: "Contact",
+        title: "Ready for senior frontend product work.",
+        description:
+          "Contact links are structured, clickable, and easy to update from the resume data file.",
+      },
+    },
+  },
   personal: {
     name: "Mohammad Zahirinia",
     title: "Senior Frontend Engineer",
@@ -304,3 +364,290 @@ export const resume = {
   availability: "Open to senior frontend roles and product-focused teams",
   accentIcon: Sparkles,
 } as const;
+
+export const resumes = {
+  en: resume,
+  fa: {
+    ...resume,
+    locale: "fa",
+    dir: "rtl",
+    languageName: "فارسی",
+    languageToggleLabel: "English",
+    ui: {
+      navAria: "ناوبری اصلی",
+      themeLight: "تغییر به حالت روشن",
+      themeDark: "تغییر به حالت تاریک",
+      menuToggle: "باز و بسته کردن منوی ناوبری",
+      viewProjects: "مشاهده پروژه‌ها",
+      downloadResume: "دانلود رزومه",
+      contactMe: "تماس با من",
+      emailMohammad: "ارسال ایمیل به محمد",
+      operatingProfile: "پروفایل کاری",
+      operatingTitle: "مهندسی فرانت‌اند محصول‌محور",
+      currentFocus: "تمرکز فعلی",
+      careerHighlights: "نکات برجسته مسیر شغلی",
+      sectionHeaders: {
+        skills: {
+          eyebrow: "نقشه توانمندی‌ها",
+          title: "جعبه‌ابزار فرانت‌اند کاربردی برای محصولات پیچیده.",
+          description:
+            "مهارت‌ها برای اسکن سریع گروه‌بندی شده‌اند و مستقیما از داده ساختاریافته رزومه رندر می‌شوند.",
+        },
+        experience: {
+          eyebrow: "تجربه کاری",
+          title:
+            "تجربه در محصولات سازمانی، فروشگاهی، رمزارز و PWA در مقیاس واقعی.",
+          description:
+            "تایم‌لاین خوانا با تمرکز بر اثرگذاری، معماری، عملکرد، راهبری تیم و کیفیت تحویل.",
+        },
+        projects: {
+          eyebrow: "کارهای منتخب",
+          title: "پروژه‌هایی با معماری قابل استفاده مجدد و نتیجه قابل اندازه‌گیری.",
+          description:
+            "هر کارت پروژه داده‌محور است و دامنه، ارزش و محدوده فنی را سریع منتقل می‌کند.",
+        },
+        knowledge: {
+          eyebrow: "دانش تخصصی",
+          title: "عمق در معماری، تحویل، کیفیت و تجربه توسعه‌دهنده.",
+          description:
+            "حوزه‌های تخصصی به شکل کارت‌های فشرده ارائه شده‌اند تا مرور سریع و دقیق ممکن باشد.",
+        },
+        education: {
+          eyebrow: "تحصیلات",
+          title: "پایه دانشگاهی و توانایی زبانی.",
+          description:
+            "تحصیلات رسمی و سطح زبان‌ها همراه با سایر داده‌های رزومه قابل ویرایش هستند.",
+        },
+        contact: {
+          eyebrow: "تماس",
+          title: "آماده برای نقش‌های ارشد فرانت‌اند محصول‌محور.",
+          description:
+            "لینک‌های تماس ساختاریافته، قابل کلیک و از فایل داده رزومه قابل ویرایش هستند.",
+        },
+      },
+    },
+    personal: {
+      ...resume.personal,
+      title: "مهندس ارشد فرانت‌اند",
+      location: "ایران",
+      summary:
+        "مهندس فرانت‌اند با بیش از ۵ سال تجربه در ساخت اپلیکیشن‌های سازمانی، پلتفرم‌های SaaS، محصولات رمزارزی و وب‌اپلیکیشن‌های پرفورمنس‌محور با React، Next.js، Vue.js و TypeScript.",
+      profile:
+        "باتجربه در طراحی معماری‌های فرانت‌اند مقیاس‌پذیر، توسعه سیستم‌های کامپوننت قابل استفاده مجدد، پیاده‌سازی SSR/SSG، بهینه‌سازی عملکرد و همکاری در تیم‌های Agile/Scrum. متمرکز بر نگهداشت‌پذیری، تجربه توسعه‌دهنده، دسترس‌پذیری و تحویل رابط‌های کاربری production-grade.",
+    },
+    contact: [
+      { ...resume.contact[0], label: "ایمیل" },
+      { ...resume.contact[1], label: "تلفن" },
+      { ...resume.contact[2], label: "لینکدین" },
+      { ...resume.contact[3], label: "گیت‌هاب" },
+      { ...resume.contact[4], label: "تلگرام" },
+    ],
+    stats: [
+      { value: "۵+", label: "سال تجربه" },
+      { value: "۱۰,۰۰۰+", label: "بازدیدکننده ماهانه PWA" },
+      { value: "۵۰۰+", label: "کاربر سازمانی" },
+      { value: "۱۰۰+", label: "کامپوننت legacy مهاجرت‌داده‌شده" },
+    ],
+    experience: [
+      {
+        role: "توسعه‌دهنده Vue.js / Nuxt.js، هم‌رهبر ارشد تیم",
+        company: "CSIS Org.",
+        dates: "۰۲/۲۰۲۵ - اکنون",
+        highlights: [
+          "توسعه اپلیکیشن‌های فرانت‌اند سازمانی مورد استفاده بیش از ۵۰۰ کاربر داخلی.",
+          "طراحی کامپوننت‌های Vue.js قابل استفاده مجدد و کاهش ۱۵ تا ۲۰ درصدی منطق تکراری UI.",
+          "ساخت کامپوننت range-picker سازمانی قابل سفارشی‌سازی برای بیش از ۵ ماژول کسب‌وکار.",
+          "جایگزینی ویرایشگر WYSIWYG قدیمی با ویرایشگر مدرن و قابل پیکربندی و کاهش حدود ۴۰ درصدی زمان تولید محتوا.",
+          "طراحی معماری shell فرانت‌اند برای سیستم microfrontend با monorepo و کتابخانه‌های مشترک.",
+          "منتورینگ اعضای تیم، بازبینی کد، کاهش بدهی فنی و بهبود رویه‌های امنیتی فرانت‌اند.",
+          "استفاده از ابزارهای توسعه مبتنی بر AI برای افزایش سرعت توسعه همراه با حفظ استانداردهای تیم.",
+        ],
+      },
+      {
+        role: "توسعه‌دهنده Next.js",
+        project: "Montazer.ir",
+        type: "Progressive Web Application",
+        highlights: [
+          "توسعه PWA چندزبانه با بیش از ۱۰,۰۰۰ بازدیدکننده ماهانه.",
+          "پیاده‌سازی قابلیت‌های PWA و افزایش حدود ۲۰ درصدی تعامل کاربران بازگشتی.",
+          "بهبود امتیاز Lighthouse Performance از ۴۵+ به ۷۵+.",
+          "کاهش حدود ۳۵ درصدی زمان بارگذاری اولیه صفحه.",
+          "ساخت زیرساخت localization برای بیش از ۲ زبان.",
+          "اطمینان از رفتار responsive در دسکتاپ، تبلت و موبایل.",
+        ],
+      },
+      {
+        role: "توسعه‌دهنده Next.js",
+        company: "Whiterose Cosmetics Store",
+        dates: "۰۱/۲۰۲۴ - ۱۲/۲۰۲۴",
+        highlights: [
+          "توسعه و نگهداری قابلیت‌های فرانت‌اند فروشگاهی با Next.js و React.",
+          "پیاده‌سازی SSR و SSG و بهبود حدود ۴۰ درصدی سرعت بارگذاری صفحات.",
+          "افزایش امتیاز Lighthouse SEO از ۷۵+ به ۹۰+.",
+          "ساخت کامپوننت‌های UI قابل استفاده مجدد و کاهش ۲۵ درصدی زمان توسعه قابلیت‌ها.",
+          "استفاده از Jest و React Testing Library برای افزایش اطمینان UI.",
+          "همکاری با pipelineهای CI/CD و جریان‌های DevOps ابری.",
+          "استفاده از Redux، Context API و Zustand برای مدیریت state.",
+        ],
+      },
+      {
+        role: "توسعه‌دهنده React.js",
+        company: "Novncy Start-up",
+        dates: "۰۱/۲۰۲۳ - ۱۲/۲۰۲۳",
+        domain: "توسعه پلتفرم رمزارز",
+        highlights: [
+          "توسعه پلتفرم رمزارزی با هزاران کاربر فعال.",
+          "ساخت رابط‌های معاملاتی responsive با React و TypeScript.",
+          "کاهش حدود ۲۵ درصدی سربار رندر کامپوننت‌ها.",
+          "توسعه سیستم کامپوننت قابل استفاده مجدد و افزایش ۳۰ درصدی سرعت تحویل قابلیت‌ها.",
+          "استفاده از استراتژی‌های SSR و CSR.",
+          "تحویل UI دقیق، سازگار با مرورگرهای مختلف و مبتنی بر Tailwind CSS.",
+        ],
+      },
+      {
+        role: "توسعه‌دهنده React.js",
+        company: "Depna.co Org.",
+        dates: "۰۱/۲۰۲۲ - ۱۲/۲۰۲۲",
+        domain: "نوسازی BPMS سازمانی",
+        highlights: [
+          "کمک به نوسازی یک پلتفرم BPMS سازمانی بزرگ‌مقیاس.",
+          "مهاجرت بیش از ۱۰۰ کامپوننت class-based قدیمی به کامپوننت‌های functional در React.",
+          "بهبود نگهداشت‌پذیری از طریق پذیرش TypeScript.",
+          "توسعه کامپوننت‌های UI قابل استفاده مجدد و کاهش حدود ۳۵ درصدی پیاده‌سازی تکراری.",
+          "سفارشی‌سازی design system مبتنی بر Material UI.",
+          "همکاری در تیم فرانت‌اند ۵ نفره.",
+        ],
+      },
+      {
+        role: "توسعه‌دهنده Junior React",
+        company: "Mazdax.com crypto exchange Company",
+        dates: "۰۸/۲۰۲۱ - ۱۲/۲۰۲۱",
+        highlights: [
+          "مشارکت در توسعه فرانت‌اند صرافی رمزارز.",
+          "کمک به پیاده‌سازی بیش از ۲۰ قابلیت کاربرمحور.",
+          "همکاری در تیم‌های Agile/Scrum.",
+          "مشارکت در بازبینی کد و تضمین کیفیت.",
+          "بهبود تجربه کاربری از طریق پیاده‌سازی UI responsive و دسترس‌پذیر.",
+        ],
+      },
+    ],
+    skillGroups: [
+      {
+        title: "توسعه فرانت‌اند",
+        icon: Code2,
+        skills: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript ES6+"],
+      },
+      {
+        title: "مدیریت State",
+        icon: GitBranch,
+        skills: ["Redux Toolkit", "Zustand", "Context API", "Vuex", "Pinia"],
+      },
+      {
+        title: "استایل و UI",
+        icon: LayoutTemplate,
+        skills: [
+          "Tailwind CSS",
+          "Material UI",
+          "Styled Components",
+          "JSS",
+          "Bootstrap",
+          "Vuetify",
+        ],
+      },
+      {
+        title: "معماری و الگوها",
+        icon: Layers3,
+        skills: [
+          "Component Design",
+          "Design Systems",
+          "SSR",
+          "SSG",
+          "CSR",
+          "Responsive Design",
+          "Accessibility WCAG",
+          "Performance Optimization",
+        ],
+      },
+      {
+        title: "ابزارها",
+        icon: PackageCheck,
+        skills: ["Git", "GitHub", "npm", "yarn", "pnpm", "Vite", "Webpack"],
+      },
+      {
+        title: "متدولوژی‌ها",
+        icon: Users,
+        skills: ["Agile", "Scrum", "Component-Driven Development"],
+      },
+    ],
+    expertise: [
+      { title: "معماری فرانت‌اند", icon: Blocks },
+      { title: "سیستم‌های کامپوننت قابل استفاده مجدد", icon: PackageCheck },
+      { title: "توسعه UI سازمانی", icon: BriefcaseBusiness },
+      { title: "بهینه‌سازی عملکرد", icon: Gauge },
+      { title: "استراتژی‌های رندر SSR / SSG / CSR", icon: MonitorSmartphone },
+      { title: "معماری Microfrontend Shell", icon: Layers3 },
+      { title: "Design Systems", icon: LayoutTemplate },
+      { title: "دسترس‌پذیری", icon: ShieldCheck },
+      { title: "معماری فرانت‌اند SEO محور", icon: SearchCheck },
+      { title: "توسعه PWA", icon: Rocket },
+      { title: "جریان‌های توسعه AI-assisted", icon: BrainCircuit },
+      { title: "تست و قابلیت اتکای UI", icon: TestTube2 },
+      { title: "بهترین رویه‌های امنیت فرانت‌اند", icon: LockKeyhole },
+    ],
+    projects: [
+      {
+        title: "Customized TipTap Editor",
+        type: "پروژه عمومی / پکیج npm",
+        description:
+          "ویرایشگر WYSIWYG قابل سفارشی‌سازی مبتنی بر Vue.js برای جریان‌های مدیریت محتوای سازمانی، ساخته‌شده روی TipTap با extensionهای قابل پیکربندی و معماری قابل استفاده مجدد.",
+        link: "https://www.npmjs.com/package/customized-tiptap-editor",
+        tech: ["Vue.js", "TipTap", "npm", "TypeScript"],
+      },
+      {
+        title: "Montazer.ir PWA",
+        type: "پروژه جانبی",
+        description:
+          "Progressive Web Application چندزبانه با بیش از ۱۰,۰۰۰ بازدیدکننده ماهانه، همراه با بهبود تعامل، localization و عملکرد.",
+        tech: ["Next.js", "PWA", "i18n", "Performance Optimization"],
+      },
+      {
+        title: "Whiterose Cosmetics Store",
+        type: "فروشگاه آنلاین",
+        description:
+          "فرانت‌اند فروشگاهی تجاری با Next.js، SSR/SSG، بهینه‌سازی SEO، کامپوننت‌های قابل استفاده مجدد و تجربه خرید responsive.",
+        tech: ["Next.js", "React", "SEO", "Jest", "React Testing Library"],
+      },
+    ],
+    education: {
+      ...resume.education,
+      degree: "کارشناسی فناوری اطلاعات",
+      institution: "دانشگاه شهاب دانش",
+      dates: "۰۹/۲۰۱۳ - ۰۲/۲۰۱۹",
+    },
+    languages: [
+      {
+        language: "انگلیسی",
+        level: "تسلط کاری حرفه‌ای",
+        icon: Languages,
+      },
+      {
+        language: "آلمانی",
+        level: "متوسط، ۴ ترم گذرانده‌شده",
+        icon: Award,
+      },
+    ],
+    sectionNav: [
+      { id: "profile", label: "پروفایل" },
+      { id: "skills", label: "مهارت‌ها" },
+      { id: "experience", label: "تجربه" },
+      { id: "projects", label: "پروژه‌ها" },
+      { id: "knowledge", label: "دانش" },
+      { id: "education", label: "تحصیلات" },
+      { id: "contact", label: "تماس" },
+    ],
+    badges: ["UI سازمانی", "SaaS", "رمزارز", "فروشگاهی", "PWA"],
+    availability: "آماده همکاری در نقش‌های ارشد فرانت‌اند و تیم‌های محصول‌محور",
+  },
+} as const;
+
+export type ResumeData = (typeof resumes)[Locale];

@@ -1,16 +1,17 @@
 import { GraduationCap } from "lucide-react";
-import { resume } from "@/src/data/resume";
+import { ResumeData } from "@/src/data/resume";
 import { SectionHeader } from "@/src/components/ui/SectionHeader";
 
-export function EducationSection() {
-  const EducationIcon = resume.education.icon;
+export function EducationSection({ resumeData }: { resumeData: ResumeData }) {
+  const EducationIcon = resumeData.education.icon;
+  const header = resumeData.ui.sectionHeaders.education;
 
   return (
     <section id="education" className="section-shell">
       <SectionHeader
-        eyebrow="Education"
-        title="Academic foundation and language capability."
-        description="Formal education and working language proficiency are kept editable alongside the rest of the resume data."
+        eyebrow={header.eyebrow}
+        title={header.title}
+        description={header.description}
         icon={GraduationCap}
       />
       <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
@@ -19,17 +20,17 @@ export function EducationSection() {
             <EducationIcon className="h-6 w-6" aria-hidden="true" />
           </span>
           <h3 className="mt-5 text-xl font-semibold text-slate-950 dark:text-white">
-            {resume.education.degree}
+            {resumeData.education.degree}
           </h3>
           <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
-            {resume.education.institution}
+            {resumeData.education.institution}
           </p>
           <p className="mt-4 inline-flex rounded-md bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">
-            {resume.education.dates}
+            {resumeData.education.dates}
           </p>
         </article>
         <div className="grid gap-4">
-          {resume.languages.map((item) => {
+          {resumeData.languages.map((item) => {
             const Icon = item.icon;
             return (
               <article

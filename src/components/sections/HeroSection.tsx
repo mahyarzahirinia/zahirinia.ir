@@ -12,9 +12,10 @@ import {
   SquareUserRound,
   Send,
 } from "lucide-react";
-import { resume } from "@/src/data/resume";
+import { ResumeData } from "@/src/data/resume";
 import { Badge } from "@/src/components/ui/badge";
 import { Button } from "@/src/components/ui/button";
+import { assetPath } from "@/src/lib/site";
 
 const contactIcons = {
   email: Mail,
@@ -24,8 +25,8 @@ const contactIcons = {
   telegram: Send,
 };
 
-export function HeroSection() {
-  const AccentIcon = resume.accentIcon;
+export function HeroSection({ resumeData }: { resumeData: ResumeData }) {
+  const AccentIcon = resumeData.accentIcon;
 
   return (
     <section
@@ -40,39 +41,39 @@ export function HeroSection() {
           transition={{ duration: 0.65, ease: "easeOut" }}
         >
           <div className="mb-5 flex flex-wrap items-center gap-2">
-            {resume.badges.map((badge) => (
+            {resumeData.badges.map((badge) => (
               <Badge key={badge}>{badge}</Badge>
             ))}
           </div>
           <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700 dark:text-cyan-200">
             <MapPin className="h-4 w-4" aria-hidden="true" />
-            {resume.personal.location}
+            {resumeData.personal.location}
           </p>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-slate-950 sm:text-6xl lg:text-7xl dark:text-white">
-            {resume.personal.name}
+            {resumeData.personal.name}
           </h1>
           <p className="mt-5 text-2xl font-medium text-slate-700 dark:text-slate-200">
-            {resume.personal.title}
+            {resumeData.personal.title}
           </p>
           <p className="mt-6 max-w-3xl text-lg leading-9 text-slate-600 dark:text-slate-300">
-            {resume.personal.summary} {resume.personal.profile}
+            {resumeData.personal.summary} {resumeData.personal.profile}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href="#projects">
-              View Projects
+              {resumeData.ui.viewProjects}
               <ArrowDownRight className="h-4 w-4" aria-hidden="true" />
             </Button>
-            <Button href={resume.personal.resumeUrl} variant="secondary">
-              Download Resume
+            <Button href={assetPath(resumeData.personal.resumeUrl)} variant="secondary">
+              {resumeData.ui.downloadResume}
               <Download className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button href="#contact" variant="ghost">
-              Contact Me
+              {resumeData.ui.contactMe}
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            {resume.contact.map((link) => {
+            {resumeData.contact.map((link) => {
               const Icon = contactIcons[link.kind];
               return (
                 <a
@@ -95,15 +96,15 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.12, ease: "easeOut" }}
           className="rounded-lg border border-slate-200 bg-white/75 p-5 shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur dark:border-white/10 dark:bg-white/7 dark:shadow-none"
-          aria-label="Career highlights"
+          aria-label={resumeData.ui.careerHighlights}
         >
           <div className="flex items-center justify-between gap-4 border-b border-slate-200 pb-5 dark:border-white/10">
             <div>
               <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                Operating profile
+                {resumeData.ui.operatingProfile}
               </p>
               <h2 className="mt-1 text-xl font-semibold text-slate-950 dark:text-white">
-                Product-minded frontend engineering
+                {resumeData.ui.operatingTitle}
               </h2>
             </div>
             <span className="rounded-md bg-cyan-500 p-3 text-slate-950">
@@ -111,7 +112,7 @@ export function HeroSection() {
             </span>
           </div>
           <div className="grid grid-cols-2 gap-3 py-5">
-            {resume.stats.map((stat) => (
+            {resumeData.stats.map((stat) => (
               <div
                 key={stat.label}
                 className="rounded-md border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-950/45"
@@ -127,9 +128,9 @@ export function HeroSection() {
           </div>
           <div className="rounded-md bg-slate-950 p-5 text-white dark:bg-white dark:text-slate-950">
             <p className="text-sm font-semibold text-cyan-300 dark:text-cyan-700">
-              Current focus
+              {resumeData.ui.currentFocus}
             </p>
-            <p className="mt-2 text-base leading-7">{resume.availability}</p>
+            <p className="mt-2 text-base leading-7">{resumeData.availability}</p>
           </div>
         </motion.aside>
       </div>

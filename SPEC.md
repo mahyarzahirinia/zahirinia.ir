@@ -51,8 +51,10 @@ export const resume = {
 - lucide-react icons for navigation, CTAs, contact links, categories, and section labels.
 - Framer Motion for subtle entrance and hover interactions.
 - Dark and light theme support.
+- English/Persian i18n with Persian RTL rendering.
 - SEO metadata and Open Graph/Twitter metadata.
 - Fully responsive mobile, tablet, and desktop behavior.
+- GitHub Pages static export support through `npm run build:github` and `.github/workflows/pages.yml`.
 
 ## UI Requirements
 - Sticky navigation with active section highlighting.
@@ -107,6 +109,7 @@ Professional, refined, technical, and confident. The interface should feel like 
 ## Acceptance Criteria
 - The app runs successfully.
 - All resume sections render from `src/data/resume.ts`.
+- English and Persian content can be switched from the navigation, with Persian displayed RTL.
 - The design works on mobile, tablet, and desktop.
 - Dark and light mode both look polished.
 - Contact links are clickable.
@@ -117,3 +120,4 @@ Professional, refined, technical, and confident. The interface should feel like 
 - Metadata is configured for SEO.
 - Components are reusable and cleanly organized.
 - `SPEC.md` exists and documents the full product and technical plan.
+- The project can export to GitHub Pages as static files in `out/`.

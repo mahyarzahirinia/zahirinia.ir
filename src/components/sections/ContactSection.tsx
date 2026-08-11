@@ -6,9 +6,10 @@ import {
   SquareUserRound,
   Send,
 } from "lucide-react";
-import { resume } from "@/src/data/resume";
+import { ResumeData } from "@/src/data/resume";
 import { SectionHeader } from "@/src/components/ui/SectionHeader";
 import { Button } from "@/src/components/ui/button";
+import { assetPath } from "@/src/lib/site";
 
 const contactIcons = {
   email: Mail,
@@ -18,18 +19,20 @@ const contactIcons = {
   telegram: Send,
 };
 
-export function ContactSection() {
+export function ContactSection({ resumeData }: { resumeData: ResumeData }) {
+  const header = resumeData.ui.sectionHeaders.contact;
+
   return (
     <section id="contact" className="section-shell pb-20">
       <SectionHeader
-        eyebrow="Contact"
-        title="Ready for senior frontend product work."
-        description="Contact links are structured, clickable, and easy to update from the resume data file."
+        eyebrow={header.eyebrow}
+        title={header.title}
+        description={header.description}
         icon={MessageCircle}
       />
       <div className="rounded-lg border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/6">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {resume.contact.map((link) => {
+          {resumeData.contact.map((link) => {
             const Icon = contactIcons[link.kind];
             return (
               <a
@@ -46,9 +49,11 @@ export function ContactSection() {
           })}
         </div>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Button href={`mailto:${resume.personal.email}`}>Email Mohammad</Button>
-          <Button href={resume.personal.resumeUrl} variant="secondary">
-            Download Resume
+          <Button href={`mailto:${resumeData.personal.email}`}>
+            {resumeData.ui.emailMohammad}
+          </Button>
+          <Button href={assetPath(resumeData.personal.resumeUrl)} variant="secondary">
+            {resumeData.ui.downloadResume}
           </Button>
         </div>
       </div>

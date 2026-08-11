@@ -1,18 +1,20 @@
 import { BrainCircuit } from "lucide-react";
-import { resume } from "@/src/data/resume";
+import { ResumeData } from "@/src/data/resume";
 import { SectionHeader } from "@/src/components/ui/SectionHeader";
 
-export function KnowledgeSection() {
+export function KnowledgeSection({ resumeData }: { resumeData: ResumeData }) {
+  const header = resumeData.ui.sectionHeaders.knowledge;
+
   return (
     <section id="knowledge" className="section-shell">
       <SectionHeader
-        eyebrow="Knowledge"
-        title="Depth across architecture, delivery, quality, and developer experience."
-        description="Expertise areas are presented as compact cards so recruiters and technical leaders can scan breadth without losing detail."
+        eyebrow={header.eyebrow}
+        title={header.title}
+        description={header.description}
         icon={BrainCircuit}
       />
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {resume.expertise.map((item) => {
+        {resumeData.expertise.map((item) => {
           const Icon = item.icon;
           return (
             <article

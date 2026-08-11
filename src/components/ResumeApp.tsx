@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Moon, Sun, X } from "lucide-react";
-import { resume } from "@/src/data/resume";
+import { Languages, Menu, Moon, Sun, X } from "lucide-react";
+import { Locale, resumes } from "@/src/data/resume";
 import { cn } from "@/src/lib/utils";
 import { ContactSection } from "./sections/ContactSection";
 import { EducationSection } from "./sections/EducationSection";
@@ -14,6 +14,14 @@ import { ProjectsSection } from "./sections/ProjectsSection";
 import { SkillsSection } from "./sections/SkillsSection";
 
 export function ResumeApp() {
+  const [locale, setLocale] = useState<Locale>(() => {
+    if (typeof window === "undefined") {
+      return "en";
+    }
+
+    const savedLocale = window.localStorage.getItem("locale");
+    return savedLocale === "en" || savedLocale === "fa" ? savedLocale : "en";
+  });
   const [activeSection, setActiveSection] = useState("profile");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(() => {
@@ -26,9 +34,19 @@ export function ResumeApp() {
     return saved ? saved === "dark" : prefersDark;
   });
 
+  const currentResume = resumes[locale];
+  const navItems = currentResume.sectionNav;
+  const isRtl = currentResume.dir === "rtl";
+
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
   }, [isDark]);
+
+  useEffect(() => {
+    document.documentElement.lang = currentResume.locale;
+    document.documentElement.dir = currentResume.dir;
+    window.localStorage.setItem("locale", locale);
+  }, [currentResume.dir, currentResume.locale, locale]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,13 +61,13 @@ export function ResumeApp() {
       { rootMargin: "-20% 0px -60% 0px", threshold: [0.1, 0.35, 0.6] },
     );
 
-    resume.sectionNav.forEach((item) => {
+    navItems.forEach((item) => {
       const node = document.getElementById(item.id);
       if (node) observer.observe(node);
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [navItems]);
 
   function toggleTheme() {
     const next = !isDark;
@@ -57,24 +75,28 @@ export function ResumeApp() {
     window.localStorage.setItem("theme", next ? "dark" : "light");
   }
 
-  const navItems = resume.sectionNav;
-
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white">
+    <div
+      className={cn(
+        "min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white",
+        isRtl && "font-[Tahoma,var(--font-geist-sans),Arial,sans-serif]",
+      )}
+      dir={currentResume.dir}
+    >
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/82 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/78">
         <nav
           className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8"
-          aria-label="Primary navigation"
+          aria-label={currentResume.ui.navAria}
         >
           <a
             href="#profile"
             className="group min-w-0 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500"
           >
             <span className="block truncate text-sm font-semibold text-slate-950 dark:text-white">
-              Mohammad Zahirinia
+              {currentResume.personal.name}
             </span>
             <span className="block truncate text-xs text-slate-500 dark:text-slate-400">
-              Senior Frontend Engineer
+              {currentResume.personal.title}
             </span>
           </a>
 
@@ -99,7 +121,9 @@ export function ResumeApp() {
             <button
               type="button"
               onClick={toggleTheme}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={
+                isDark ? currentResume.ui.themeLight : currentResume.ui.themeDark
+              }
               className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
             >
               {isDark ? (
@@ -110,8 +134,19 @@ export function ResumeApp() {
             </button>
             <button
               type="button"
+              onClick={() =>
+                setLocale((value) => (value === "en" ? "fa" : "en"))
+              }
+              aria-label={`Switch language to ${currentResume.languageToggleLabel}`}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
+            >
+              <Languages className="h-4 w-4" aria-hidden="true" />
+              <span>{currentResume.languageToggleLabel}</span>
+            </button>
+            <button
+              type="button"
               onClick={() => setIsMenuOpen((value) => !value)}
-              aria-label="Toggle navigation menu"
+              aria-label={currentResume.ui.menuToggle}
               aria-expanded={isMenuOpen}
               className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 lg:hidden dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
             >
@@ -155,13 +190,13 @@ export function ResumeApp() {
       </header>
 
       <main>
-        <HeroSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <KnowledgeSection />
-        <EducationSection />
-        <ContactSection />
+        <HeroSection resumeData={currentResume} />
+        <SkillsSection resumeData={currentResume} />
+        <ExperienceSection resumeData={currentResume} />
+        <ProjectsSection resumeData={currentResume} />
+        <KnowledgeSection resumeData={currentResume} />
+        <EducationSection resumeData={currentResume} />
+        <ContactSection resumeData={currentResume} />
       </main>
     </div>
   );
