@@ -79,7 +79,7 @@ export function ResumeApp() {
     <div
       className={cn(
         "min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white",
-        isRtl && "font-[Tahoma,var(--font-geist-sans),Arial,sans-serif]",
+        isRtl && "font-persian",
       )}
       dir={currentResume.dir}
     >
