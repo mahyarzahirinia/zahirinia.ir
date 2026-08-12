@@ -41,10 +41,31 @@ export function ResumeApp() {
   const isRtl = currentResume.dir === "rtl";
   const nextLocale: Locale = locale === "en" ? "fa" : "en";
   const languageCode = locale === "en" ? "EN" : "فا";
+  const themeLabel = isDark
+    ? currentResume.ui.themeDarkLabel
+    : currentResume.ui.themeLightLabel;
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
   }, [isDark]);
+
+  useEffect(() => {
+    if (!hasLoadedPreferences) {
+      return;
+    }
+
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function syncSystemTheme(event: MediaQueryListEvent) {
+      if (!window.localStorage.getItem("theme")) {
+        setIsDark(event.matches);
+      }
+    }
+
+    media.addEventListener("change", syncSystemTheme);
+    return () => media.removeEventListener("change", syncSystemTheme);
+  }, [hasLoadedPreferences]);
 
   useEffect(() => {
     document.documentElement.lang = currentResume.locale;
@@ -135,13 +156,16 @@ export function ResumeApp() {
               aria-label={
                 isDark ? currentResume.ui.themeLight : currentResume.ui.themeDark
               }
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
+              className="group inline-flex h-10 items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-2.5 text-sm font-semibold text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
             >
               {isDark ? (
-                <Sun className="h-5 w-5" aria-hidden="true" />
+                <Moon className="h-4 w-4" aria-hidden="true" />
               ) : (
-                <Moon className="h-5 w-5" aria-hidden="true" />
+                <Sun className="h-4 w-4" aria-hidden="true" />
               )}
+              <span className={cn("leading-none", isRtl && "font-persian")}>
+                {themeLabel}
+              </span>
             </button>
             <button
               type="button"

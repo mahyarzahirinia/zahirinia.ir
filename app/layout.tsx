@@ -17,6 +17,19 @@ const vazirmatn = Vazirmatn({
   subsets: ["arabic", "latin"],
 });
 
+const themeInitScript = `
+(() => {
+  try {
+    const savedTheme = window.localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    document.documentElement.classList.toggle("dark", isDark);
+  } catch {
+    document.documentElement.classList.remove("dark");
+  }
+})();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://zahirinia.ir"),
   title: {
@@ -65,6 +78,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${vazirmatn.variable} antialiased`}
       >
