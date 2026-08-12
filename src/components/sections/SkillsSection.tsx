@@ -1,7 +1,7 @@
 import { Code2, Gauge, Layers3, ShieldCheck } from "lucide-react";
-import { ResumeData } from "@/src/data/resume";
-import { SectionHeader } from "@/src/components/ui/SectionHeader";
-import { SkillGroup } from "@/src/components/ui/SkillGroup";
+import { ResumeData } from "@/data/resume";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SkillGroup } from "@/components/ui/SkillGroup";
 
 export function SkillsSection({ resumeData }: { resumeData: ResumeData }) {
   const header = resumeData.ui.sectionHeaders.skills;

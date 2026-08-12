@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Languages, Menu, Moon, Sun, X } from "lucide-react";
-import { Locale, resumes } from "@/src/data/resume";
-import { cn } from "@/src/lib/utils";
+import { Locale, resumes } from "@/data/resume";
+import { cn } from "@/lib/utils";
 import { ContactSection } from "./sections/ContactSection";
 import { EducationSection } from "./sections/EducationSection";
 import { ExperienceSection } from "./sections/ExperienceSection";

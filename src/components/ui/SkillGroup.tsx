@@ -1,4 +1,4 @@
-import { SkillGroup as SkillGroupType } from "@/src/data/resume";
+import { SkillGroup as SkillGroupType } from "@/data/resume";
 import { Badge } from "./badge";
 
 export function SkillGroup({ group }: { group: SkillGroupType }) {

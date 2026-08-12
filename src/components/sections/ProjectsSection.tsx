@@ -1,7 +1,7 @@
 import { FolderGit2 } from "lucide-react";
-import { ResumeData } from "@/src/data/resume";
-import { ProjectCard } from "@/src/components/ui/ProjectCard";
-import { SectionHeader } from "@/src/components/ui/SectionHeader";
+import { ResumeData } from "@/data/resume";
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function ProjectsSection({ resumeData }: { resumeData: ResumeData }) {
   const header = resumeData.ui.sectionHeaders.projects;

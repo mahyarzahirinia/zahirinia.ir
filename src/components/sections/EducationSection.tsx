@@ -1,6 +1,6 @@
 import { GraduationCap } from "lucide-react";
-import { ResumeData } from "@/src/data/resume";
-import { SectionHeader } from "@/src/components/ui/SectionHeader";
+import { ResumeData } from "@/data/resume";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function EducationSection({ resumeData }: { resumeData: ResumeData }) {
   const EducationIcon = resumeData.education.icon;

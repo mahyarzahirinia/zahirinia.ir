@@ -1,5 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
-import { Experience } from "@/src/data/resume";
+import { Experience } from "@/data/resume";
 
 export function TimelineItem({
   item,

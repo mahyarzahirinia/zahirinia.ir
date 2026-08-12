@@ -42,7 +42,7 @@ test("keeps resume content centralized in the data file", async () => {
   const [data, page, app, hero, skills, experience, projects, spec, workflow] =
     await Promise.all([
       readFile(new URL("../src/data/resume.ts", import.meta.url), "utf8"),
-      readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../src/app/page.tsx", import.meta.url), "utf8"),
       readFile(
         new URL("../src/components/ResumeApp.tsx", import.meta.url),
         "utf8",

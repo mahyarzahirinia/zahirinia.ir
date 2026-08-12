@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, FolderGit2, Goal } from "lucide-react";
-import { Project } from "@/src/data/resume";
+import { Project } from "@/data/resume";
 import { Badge } from "./badge";
 
 export function ProjectCard({

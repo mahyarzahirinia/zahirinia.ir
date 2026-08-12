@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ResumeApp } from "@/src/components/ResumeApp";
+import { ResumeApp } from "@/components/ResumeApp";
 
 export const metadata: Metadata = {
   title: "Mohammad Zahirinia | Senior Frontend Engineer",

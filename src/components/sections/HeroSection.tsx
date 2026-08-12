@@ -12,10 +12,10 @@ import {
   SquareUserRound,
   Send,
 } from "lucide-react";
-import { ResumeData } from "@/src/data/resume";
-import { Badge } from "@/src/components/ui/badge";
-import { Button } from "@/src/components/ui/button";
-import { assetPath } from "@/src/lib/site";
+import { ResumeData } from "@/data/resume";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { assetPath } from "@/lib/site";
 
 const contactIcons = {
   email: Mail,

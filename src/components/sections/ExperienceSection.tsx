@@ -7,9 +7,9 @@ import {
   Layers3,
   Sparkles,
 } from "lucide-react";
-import { Experience, ResumeData } from "@/src/data/resume";
-import { SectionHeader } from "@/src/components/ui/SectionHeader";
-import { cn } from "@/src/lib/utils";
+import { Experience, ResumeData } from "@/data/resume";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { cn } from "@/lib/utils";
 
 const markerColors = [
   "from-cyan-400 to-sky-500",
