@@ -48,6 +48,7 @@ export type Project = {
   title: string;
   type: string;
   description: string;
+  impact: string;
   link?: string;
   tech: readonly string[];
 };
@@ -82,41 +83,41 @@ export const resume = {
     sectionHeaders: {
       skills: {
         eyebrow: "Capability Map",
-        title: "A practical frontend toolkit for complex product work.",
+        title: "Core stack for senior frontend delivery.",
         description:
-          "Skills are grouped for quick scanning and rendered directly from structured resume data.",
+          "React, Next.js, Vue.js, TypeScript, performance, accessibility, and component architecture across product teams and enterprise systems.",
       },
       experience: {
         eyebrow: "Experience",
         title: "Enterprise, commerce, crypto, and PWA work at production scale.",
         description:
-          "A readable timeline that emphasizes impact, architecture, performance, team leadership, and delivery quality.",
+          "Progression from implementation to architecture and team leadership, with measurable improvements in performance, maintainability, and delivery speed.",
       },
       projects: {
         eyebrow: "Selected Work",
         title:
           "Projects with reusable architecture and measurable product outcomes.",
         description:
-          "Each project card is data-driven, link-aware, and designed to communicate domain, value, and technical scope quickly.",
+          "A focused sample of production and public work showing reusable UI systems, PWA delivery, SEO, performance, and enterprise content tooling.",
       },
       knowledge: {
         eyebrow: "Knowledge",
         title:
-          "Depth across architecture, delivery, quality, and developer experience.",
+          "Engineering judgment beyond framework syntax.",
         description:
-          "Expertise areas are presented as compact cards so recruiters and technical leaders can scan breadth without losing detail.",
+          "Strengths that matter in senior roles: architecture tradeoffs, scalable components, performance budgets, accessibility, testing, and developer experience.",
       },
       education: {
         eyebrow: "Education",
-        title: "Academic foundation and language capability.",
+        title: "Education and communication readiness.",
         description:
-          "Formal education and working language proficiency are kept editable alongside the rest of the resume data.",
+          "Information Technology background with professional English communication and continued language development.",
       },
       contact: {
         eyebrow: "Contact",
-        title: "Ready for senior frontend product work.",
+        title: "Available for senior frontend roles.",
         description:
-          "Contact links are structured, clickable, and easy to update from the resume data file.",
+          "Best fit: product-focused teams that need frontend architecture, maintainable UI systems, and measurable performance improvements.",
       },
     },
   },
@@ -128,9 +129,9 @@ export const resume = {
     email: "zahiriniamahyar@gmail.com",
     resumeUrl: "/resume-mohammad-zahirinia.pdf",
     summary:
-      "Frontend Engineer with 5+ years of experience building enterprise applications, SaaS platforms, cryptocurrency products, and high-performance web applications using React, Next.js, Vue.js, and TypeScript.",
+      "Senior Frontend Engineer with 5+ years building enterprise applications, SaaS platforms, cryptocurrency products, e-commerce experiences, and high-performance PWAs.",
     profile:
-      "Experienced in designing scalable frontend architectures, developing reusable component systems, implementing SSR/SSG solutions, optimizing application performance, and collaborating within Agile/Scrum teams. Strong focus on maintainability, developer experience, accessibility, and delivering production-grade user interfaces.",
+      "Strongest in React, Next.js, Vue.js, TypeScript, reusable component systems, SSR/SSG, performance optimization, accessibility, and frontend architecture. Comfortable translating product goals into reliable interfaces, mentoring teammates, and improving codebases without slowing delivery.",
   },
   contact: [
     {
@@ -317,6 +318,8 @@ export const resume = {
       type: "Public Project / npm Package",
       description:
         "A customizable Vue.js-based WYSIWYG editor for enterprise content management workflows, built on top of TipTap with configurable extensions and reusable architecture.",
+      impact:
+        "Packaged complex editor behavior into a reusable tool that can be adopted across content-heavy enterprise workflows.",
       link: "https://www.npmjs.com/package/customized-tiptap-editor",
       tech: ["Vue.js", "TipTap", "npm", "TypeScript"],
     },
@@ -325,6 +328,8 @@ export const resume = {
       type: "Side Project",
       description:
         "A multilingual Progressive Web Application serving 10,000+ monthly visitors with improved engagement, localization, and performance.",
+      impact:
+        "Delivered a multilingual PWA experience with 10,000+ monthly visitors, stronger returning-user engagement, and faster initial loads.",
       tech: ["Next.js", "PWA", "i18n", "Performance Optimization"],
     },
     {
@@ -332,6 +337,8 @@ export const resume = {
       type: "E-commerce",
       description:
         "A commercial Next.js e-commerce frontend with SSR/SSG, SEO optimization, reusable components, and responsive shopping experiences.",
+      impact:
+        "Improved SEO, page speed, and feature delivery through reusable UI components, SSR/SSG, and test-backed frontend work.",
       tech: ["Next.js", "React", "SEO", "Jest", "React Testing Library"],
     },
   ] satisfies Project[],
@@ -393,40 +400,40 @@ export const resumes = {
       sectionHeaders: {
         skills: {
           eyebrow: "نقشه توانمندی‌ها",
-          title: "جعبه‌ابزار فرانت‌اند کاربردی برای محصولات پیچیده.",
+          title: "استک اصلی برای تحویل فرانت‌اند در سطح ارشد.",
           description:
-            "مهارت‌ها برای اسکن سریع گروه‌بندی شده‌اند و مستقیما از داده ساختاریافته رزومه رندر می‌شوند.",
+            "React، Next.js، Vue.js، TypeScript، پرفورمنس، دسترس‌پذیری و معماری کامپوننت در تیم‌های محصول و سیستم‌های سازمانی.",
         },
         experience: {
           eyebrow: "تجربه کاری",
           title:
             "تجربه در محصولات سازمانی، فروشگاهی، رمزارز و PWA در مقیاس واقعی.",
           description:
-            "تایم‌لاین خوانا با تمرکز بر اثرگذاری، معماری، عملکرد، راهبری تیم و کیفیت تحویل.",
+            "مسیر رشد از پیاده‌سازی تا معماری و راهبری تیم، همراه با بهبودهای قابل اندازه‌گیری در عملکرد، نگهداشت‌پذیری و سرعت تحویل.",
         },
         projects: {
           eyebrow: "کارهای منتخب",
           title: "پروژه‌هایی با معماری قابل استفاده مجدد و نتیجه قابل اندازه‌گیری.",
           description:
-            "هر کارت پروژه داده‌محور است و دامنه، ارزش و محدوده فنی را سریع منتقل می‌کند.",
+            "نمونه‌ای متمرکز از کارهای production و عمومی در سیستم‌های UI قابل استفاده مجدد، PWA، SEO، پرفورمنس و ابزارهای محتوایی سازمانی.",
         },
         knowledge: {
           eyebrow: "دانش تخصصی",
-          title: "عمق در معماری، تحویل، کیفیت و تجربه توسعه‌دهنده.",
+          title: "قضاوت مهندسی فراتر از سینتکس فریم‌ورک‌ها.",
           description:
-            "حوزه‌های تخصصی به شکل کارت‌های فشرده ارائه شده‌اند تا مرور سریع و دقیق ممکن باشد.",
+            "توانمندی‌های مهم برای نقش ارشد: تصمیم‌های معماری، کامپوننت‌های مقیاس‌پذیر، بودجه پرفورمنس، دسترس‌پذیری، تست و تجربه توسعه‌دهنده.",
         },
         education: {
           eyebrow: "تحصیلات",
-          title: "پایه دانشگاهی و توانایی زبانی.",
+          title: "تحصیلات و آمادگی ارتباطی.",
           description:
-            "تحصیلات رسمی و سطح زبان‌ها همراه با سایر داده‌های رزومه قابل ویرایش هستند.",
+            "پیش‌زمینه فناوری اطلاعات همراه با توانایی ارتباط حرفه‌ای به انگلیسی و ادامه توسعه زبان.",
         },
         contact: {
           eyebrow: "تماس",
-          title: "آماده برای نقش‌های ارشد فرانت‌اند محصول‌محور.",
+          title: "آماده همکاری در نقش‌های ارشد فرانت‌اند.",
           description:
-            "لینک‌های تماس ساختاریافته، قابل کلیک و از فایل داده رزومه قابل ویرایش هستند.",
+            "بهترین تناسب: تیم‌های محصول‌محور که به معماری فرانت‌اند، سیستم‌های UI قابل نگهداری و بهبودهای قابل اندازه‌گیری پرفورمنس نیاز دارند.",
         },
       },
     },
@@ -435,9 +442,9 @@ export const resumes = {
       title: "مهندس ارشد فرانت‌اند",
       location: "ایران",
       summary:
-        "مهندس فرانت‌اند با بیش از ۵ سال تجربه در ساخت اپلیکیشن‌های سازمانی، پلتفرم‌های SaaS، محصولات رمزارزی و وب‌اپلیکیشن‌های پرفورمنس‌محور با React، Next.js، Vue.js و TypeScript.",
+        "مهندس ارشد فرانت‌اند با بیش از ۵ سال تجربه در ساخت اپلیکیشن‌های سازمانی، پلتفرم‌های SaaS، محصولات رمزارزی، تجربه‌های فروشگاهی و PWAهای پرفورمنس‌محور.",
       profile:
-        "باتجربه در طراحی معماری‌های فرانت‌اند مقیاس‌پذیر، توسعه سیستم‌های کامپوننت قابل استفاده مجدد، پیاده‌سازی SSR/SSG، بهینه‌سازی عملکرد و همکاری در تیم‌های Agile/Scrum. متمرکز بر نگهداشت‌پذیری، تجربه توسعه‌دهنده، دسترس‌پذیری و تحویل رابط‌های کاربری production-grade.",
+        "نقطه قوت اصلی در React، Next.js، Vue.js، TypeScript، سیستم‌های کامپوننت قابل استفاده مجدد، SSR/SSG، بهینه‌سازی پرفورمنس، دسترس‌پذیری و معماری فرانت‌اند است. در تبدیل اهداف محصول به رابط‌های قابل اتکا، منتورینگ تیم و بهبود codebase بدون کند کردن تحویل توانمند است.",
     },
     contact: [
       { ...resume.contact[0], label: "ایمیل" },
@@ -604,6 +611,8 @@ export const resumes = {
         type: "پروژه عمومی / پکیج npm",
         description:
           "ویرایشگر WYSIWYG قابل سفارشی‌سازی مبتنی بر Vue.js برای جریان‌های مدیریت محتوای سازمانی، ساخته‌شده روی TipTap با extensionهای قابل پیکربندی و معماری قابل استفاده مجدد.",
+        impact:
+          "رفتار پیچیده ویرایشگر را به ابزاری قابل استفاده مجدد تبدیل کرد که در جریان‌های محتوایی سازمانی قابل به‌کارگیری است.",
         link: "https://www.npmjs.com/package/customized-tiptap-editor",
         tech: ["Vue.js", "TipTap", "npm", "TypeScript"],
       },
@@ -612,6 +621,8 @@ export const resumes = {
         type: "پروژه جانبی",
         description:
           "Progressive Web Application چندزبانه با بیش از ۱۰,۰۰۰ بازدیدکننده ماهانه، همراه با بهبود تعامل، localization و عملکرد.",
+        impact:
+          "تجربه PWA چندزبانه با بیش از ۱۰,۰۰۰ بازدیدکننده ماهانه، تعامل بهتر کاربران بازگشتی و بارگذاری اولیه سریع‌تر.",
         tech: ["Next.js", "PWA", "i18n", "Performance Optimization"],
       },
       {
@@ -619,6 +630,8 @@ export const resumes = {
         type: "فروشگاه آنلاین",
         description:
           "فرانت‌اند فروشگاهی تجاری با Next.js، SSR/SSG، بهینه‌سازی SEO، کامپوننت‌های قابل استفاده مجدد و تجربه خرید responsive.",
+        impact:
+          "بهبود SEO، سرعت صفحات و تحویل قابلیت‌ها از طریق کامپوننت‌های قابل استفاده مجدد، SSR/SSG و کار فرانت‌اند همراه با تست.",
         tech: ["Next.js", "React", "SEO", "Jest", "React Testing Library"],
       },
     ],

@@ -5,6 +5,7 @@ import { SectionHeader } from "@/src/components/ui/SectionHeader";
 
 export function ProjectsSection({ resumeData }: { resumeData: ResumeData }) {
   const header = resumeData.ui.sectionHeaders.projects;
+  const isRtl = resumeData.dir === "rtl";
 
   return (
     <section id="projects" className="section-shell">
@@ -16,7 +17,12 @@ export function ProjectsSection({ resumeData }: { resumeData: ResumeData }) {
       />
       <div className="grid gap-5 lg:grid-cols-3">
         {resumeData.projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+          <ProjectCard
+            key={project.title}
+            project={project}
+            outcomeLabel={isRtl ? "نتیجه" : "Outcome"}
+            artifactLabel={isRtl ? "مشاهده" : "View"}
+          />
         ))}
       </div>
     </section>
