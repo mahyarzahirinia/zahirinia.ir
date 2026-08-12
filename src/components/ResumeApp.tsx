@@ -14,29 +14,33 @@ import { ProjectsSection } from "./sections/ProjectsSection";
 import { SkillsSection } from "./sections/SkillsSection";
 
 export function ResumeApp() {
-  const [locale, setLocale] = useState<Locale>(() => {
-    if (typeof window === "undefined") {
-      return "en";
-    }
-
-    const savedLocale = window.localStorage.getItem("locale");
-    return savedLocale === "en" || savedLocale === "fa" ? savedLocale : "en";
-  });
+  const [locale, setLocale] = useState<Locale>("en");
   const [activeSection, setActiveSection] = useState("profile");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") {
-      return true;
-    }
+  const [isDark, setIsDark] = useState(false);
+  const [hasLoadedPreferences, setHasLoadedPreferences] = useState(false);
 
-    const saved = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return saved ? saved === "dark" : prefersDark;
-  });
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const savedLocale = window.localStorage.getItem("locale");
+      const saved = window.localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (savedLocale === "en" || savedLocale === "fa") {
+        setLocale(savedLocale);
+      }
+      setIsDark(saved ? saved === "dark" : prefersDark);
+      setHasLoadedPreferences(true);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   const currentResume = resumes[locale];
   const navItems = currentResume.sectionNav;
   const isRtl = currentResume.dir === "rtl";
+  const nextLocale: Locale = locale === "en" ? "fa" : "en";
+  const languageCode = locale === "en" ? "EN" : "فا";
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
@@ -45,8 +49,15 @@ export function ResumeApp() {
   useEffect(() => {
     document.documentElement.lang = currentResume.locale;
     document.documentElement.dir = currentResume.dir;
-    window.localStorage.setItem("locale", locale);
-  }, [currentResume.dir, currentResume.locale, locale]);
+    if (hasLoadedPreferences) {
+      window.localStorage.setItem("locale", locale);
+    }
+  }, [
+    currentResume.dir,
+    currentResume.locale,
+    hasLoadedPreferences,
+    locale,
+  ]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -134,14 +145,27 @@ export function ResumeApp() {
             </button>
             <button
               type="button"
-              onClick={() =>
-                setLocale((value) => (value === "en" ? "fa" : "en"))
-              }
+              onClick={() => setLocale(nextLocale)}
               aria-label={`Switch language to ${currentResume.languageToggleLabel}`}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
+              className="group inline-flex h-10 items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-2.5 text-sm font-semibold text-slate-700 transition hover:border-cyan-500 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/12 dark:bg-white/8 dark:text-slate-200 dark:hover:border-cyan-300 dark:hover:text-cyan-100"
             >
               <Languages className="h-4 w-4" aria-hidden="true" />
-              <span>{currentResume.languageToggleLabel}</span>
+              <span
+                className={cn(
+                  "inline-flex h-6 min-w-7 items-center justify-center rounded bg-slate-100 px-1.5 text-[11px] leading-none text-slate-600 transition group-hover:bg-cyan-500/12 group-hover:text-cyan-700 dark:bg-white/10 dark:text-slate-300 dark:group-hover:text-cyan-100",
+                  locale === "fa" && "font-persian",
+                )}
+              >
+                {languageCode}
+              </span>
+              <span
+                className={cn(
+                  "leading-none",
+                  nextLocale === "fa" && "font-persian",
+                )}
+              >
+                {currentResume.languageToggleLabel}
+              </span>
             </button>
             <button
               type="button"
